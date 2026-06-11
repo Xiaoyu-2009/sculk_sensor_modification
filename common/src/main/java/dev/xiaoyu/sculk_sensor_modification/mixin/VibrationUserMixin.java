@@ -1,5 +1,6 @@
 package dev.xiaoyu.sculk_sensor_modification.mixin;
 
+import dev.xiaoyu.sculk_sensor_modification.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Difficulty;
@@ -29,6 +30,9 @@ public class VibrationUserMixin {
 
     @Inject(method = "onReceiveVibration", at = @At("TAIL"))
     private void onOnReceiveVibration(ServerLevel arg, BlockPos arg2, GameEvent arg3, Entity arg4, Entity arg5, float f, CallbackInfo ci) {
+        Entity sourceEntity = arg5 != null ? arg5 : arg4;
+        if (sourceEntity == null || Config.isEntityExcluded(sourceEntity)) return;
+
         if (arg.getGameRules().getBoolean(GameRules.RULE_DO_WARDEN_SPAWNING) && arg.getDifficulty() != Difficulty.PEACEFUL) {
             this.sculk_sensor_modification$warningLevel++;
             if (this.sculk_sensor_modification$warningLevel >= 4) {
