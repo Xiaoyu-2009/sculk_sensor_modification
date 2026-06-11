@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "${archives_name}",
+  "version": "${version}",
+  "name": "${mod_displayName}",
+  "description": "${mod_description}",
+  "authors": [
+    "${mod_authors}"
+  ],
+  "license": "${mod_license}",
+  "icon": "${mod_logoFile}",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.xiaoyu.sculk_sensor_modification.fabric.SculkSensorModificationFabric"
+    ]
+  },
+  "mixins": [
+    "${archives_name}.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${fabric_loader_version}",
+    "minecraft": "~${minecraft_version}",
+    "java": ">=17",
+    "architectury": ">=${architectury_api_version}",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

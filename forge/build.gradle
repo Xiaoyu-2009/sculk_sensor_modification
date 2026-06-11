@@ -1,0 +1,92 @@
+plugins {
+    id 'com.gradleup.shadow'
+}
+
+loom {
+    forge {
+        mixinConfig "${archives_name}.mixins.json"
+    }
+}
+
+architectury {
+    platformSetupLoomIde()
+    forge()
+}
+
+configurations {
+    common {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentForge.extendsFrom common
+
+    // Files in this configuration will be bundled into your mod using the Shadow plugin.
+    // Don't use the `shadow` configuration from the plugin itself as it's meant for excluding files.
+    shadowBundle {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+}
+
+dependencies {
+    forge "net.minecraftforge:forge:$rootProject.forge_version"
+
+    if (include.toBoolean()) {
+        /*include(modImplementation "com.tterrag.registrate:Registrate:$rootProject.registrate_forge_version")*/
+        include(modImplementation "dev.architectury:architectury-forge:$rootProject.architectury_api_version")
+    }
+
+    // 苹果皮
+    modImplementation "curse.maven:appleskin-248787:4770828"
+
+    // Saturation Plus (吃不停)
+    modImplementation "curse.maven:saturation-plus-959951:7552750"
+
+    // 玉
+    modImplementation "curse.maven:jade-324717:5672013"
+
+    // jei
+    modImplementation "curse.maven:jei-238222:7391695"
+
+    common(project(path: ':common', configuration: 'namedElements')) { transitive = false }
+    shadowBundle project(path: ':common', configuration: 'transformProductionForge')
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'mod_license', project.mod_license
+    inputs.property 'mod_displayName', project.mod_displayName
+    inputs.property 'mod_logoFile', project.mod_logoFile
+    inputs.property 'mod_authors', project.mod_authors
+    inputs.property 'mod_description', project.mod_description
+    inputs.property 'archives_name', project.archives_name
+    inputs.property 'minecraft_version', project.minecraft_version
+    inputs.property 'architectury_api_version', project.architectury_api_version
+
+    filesMatching('META-INF/mods.toml') {
+        expand(
+            version: inputs.properties.version,
+            archives_name: inputs.properties.archives_name,
+            mod_license: inputs.properties.mod_license,
+            mod_displayName: inputs.properties.mod_displayName,
+            mod_logoFile: inputs.properties.mod_logoFile,
+            mod_authors: inputs.properties.mod_authors,
+            mod_description: inputs.properties.mod_description,
+            minecraft_version: inputs.properties.minecraft_version,
+            architectury_api_version: inputs.properties.architectury_api_version
+        )
+    }
+}
+
+gradle.taskGraph.whenReady {
+    if (gradle.taskGraph.hasTask(':forge:build')) sourceSets.main.java.srcDirs += [project(':common').file('src/main/java')]
+}
+
+sourceSets.main.resources.srcDirs += [project(':common').file('src/main/resources')]
+
+shadowJar {
+    configurations = [project.configurations.shadowBundle]
+    archiveClassifier = 'dev-shadow'
+}
