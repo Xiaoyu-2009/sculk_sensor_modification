@@ -3,7 +3,7 @@
 	"package": "dev.xiaoyu.sculk_sensor_modification.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"VibrationUserMixin"
+		"SculkSensorBlockEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
