@@ -6,10 +6,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.level.block.SculkShriekerBlock;
 import net.minecraft.world.level.block.entity.SculkShriekerBlockEntity;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.PositionSource;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
@@ -50,6 +52,8 @@ public class VibrationUserMixin {
         Vec3 posVec = positionSource.getPosition(serverLevel).orElseThrow();
         if (!(serverLevel.getBlockEntity(BlockPos.containing(posVec)) instanceof SculkShriekerBlockEntity shrieker)) return;
         if (shrieker.getBlockState().getValue(SculkShriekerBlock.SHRIEKING)) return;
+
+        if (!serverLevel.getEntitiesOfClass(Warden.class, AABB.ofSize(posVec, 48, 48, 48)).isEmpty()) return;
 
         ServerPlayer serverPlayer = SculkShriekerBlockEntity.tryGetPlayer(sourceEntity);
         if (serverPlayer != null) {
