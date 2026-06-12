@@ -7,7 +7,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'sculk-sensor-modification'
+rootProject.name = 'sculk_sensor_modification'
 
 include 'common'
 include 'fabric'

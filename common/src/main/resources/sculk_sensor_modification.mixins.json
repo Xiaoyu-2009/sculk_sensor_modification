@@ -4,7 +4,8 @@
 	"compatibilityLevel": "JAVA_17",
 	"refmap": "sculk_sensor_modification-common-common-refmap.json",
 	"mixins": [
-		"SculkSensorBlockEntityMixin"
+		"SculkSensorBlockEntityMixin",
+		"SculkShriekerBlockEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
