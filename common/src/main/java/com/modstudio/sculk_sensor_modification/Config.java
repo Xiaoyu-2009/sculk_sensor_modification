@@ -1,4 +1,4 @@
-package dev.xiaoyu.sculk_sensor_modification;
+package com.modstudio.sculk_sensor_modification;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;

@@ -1,7 +1,7 @@
-package dev.xiaoyu.sculk_sensor_modification.mixin;
+package com.modstudio.sculk_sensor_modification.mixin;
 
-import dev.xiaoyu.sculk_sensor_modification.Config;
-import dev.xiaoyu.sculk_sensor_modification.mixin.accessor.SculkShriekerBlockEntityAccessor;
+import com.modstudio.sculk_sensor_modification.Config;
+import com.modstudio.sculk_sensor_modification.mixin.accessor.SculkShriekerBlockEntityAccessor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;

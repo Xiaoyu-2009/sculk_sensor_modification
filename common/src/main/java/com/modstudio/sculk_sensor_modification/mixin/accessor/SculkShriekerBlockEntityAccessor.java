@@ -1,4 +1,4 @@
-package dev.xiaoyu.sculk_sensor_modification.mixin.accessor;
+package com.modstudio.sculk_sensor_modification.mixin.accessor;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;

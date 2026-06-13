@@ -1,4 +1,4 @@
-package dev.xiaoyu.sculk_sensor_modification;
+package com.modstudio.sculk_sensor_modification;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -12,7 +12,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "dev.xiaoyu.sculk_sensor_modification.fabric.SculkSensorModificationFabric"
+      "com.modstudio.sculk_sensor_modification.fabric.SculkSensorModificationFabric"
     ]
   },
   "mixins": [

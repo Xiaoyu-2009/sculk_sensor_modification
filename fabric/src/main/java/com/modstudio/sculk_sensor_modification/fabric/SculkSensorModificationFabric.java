@@ -1,6 +1,6 @@
-package dev.xiaoyu.sculk_sensor_modification.fabric;
+package com.modstudio.sculk_sensor_modification.fabric;
 
-import dev.xiaoyu.sculk_sensor_modification.SculkSensorModification;
+import com.modstudio.sculk_sensor_modification.SculkSensorModification;
 import net.fabricmc.api.ModInitializer;
 
 public final class SculkSensorModificationFabric implements ModInitializer {

@@ -1,7 +1,7 @@
-package dev.xiaoyu.sculk_sensor_modification.forge;
+package com.modstudio.sculk_sensor_modification.forge;
 
 import dev.architectury.platform.forge.EventBuses;
-import dev.xiaoyu.sculk_sensor_modification.SculkSensorModification;
+import com.modstudio.sculk_sensor_modification.SculkSensorModification;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
